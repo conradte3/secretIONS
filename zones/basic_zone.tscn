@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://i8xmiq6cjejq"]
+
+[ext_resource type="PackedScene" uid="uid://cy1h5frwcu2ja" path="res://player/player.tscn" id="1_dpgvl"]
+[ext_resource type="Script" path="res://zones/zone.gd" id="1_xnawd"]
+[ext_resource type="PackedScene" uid="uid://bssrkkkdw56li" path="res://zones/tower_select_zone.tscn" id="3_fhvx3"]
+[ext_resource type="Script" path="res://zones/zone_changer.gd" id="3_g7o0v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mylpn"]
+
+[node name="BasicZone" type="Node2D"]
+script = ExtResource("1_xnawd")
+
+[node name="ZoneChanger" type="Area2D" parent="."]
+position = Vector2(186, 152)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_g7o0v")
+destination = ExtResource("3_fhvx3")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneChanger"]
+shape = SubResource("RectangleShape2D_mylpn")
+
+[node name="Player" parent="." instance=ExtResource("1_dpgvl")]
+position = Vector2(184, 225)
+collision_mask = 1

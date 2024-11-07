@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bssrkkkdw56li"]
+
+[ext_resource type="Script" path="res://zones/zone_changer.gd" id="1_rxgyv"]
+[ext_resource type="Script" path="res://zones/zone.gd" id="1_vvwm7"]
+[ext_resource type="PackedScene" uid="uid://cy1h5frwcu2ja" path="res://player/player.tscn" id="2_47h4s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6gw4"]
+
+[node name="TowerSelectZone" type="Node2D"]
+script = ExtResource("1_vvwm7")
+
+[node name="ToTower1" type="Area2D" parent="."]
+position = Vector2(88, 107)
+script = ExtResource("1_rxgyv")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToTower1"]
+shape = SubResource("RectangleShape2D_s6gw4")
+
+[node name="ToTower2" type="Area2D" parent="."]
+position = Vector2(304, 50)
+script = ExtResource("1_rxgyv")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToTower2"]
+shape = SubResource("RectangleShape2D_s6gw4")
+
+[node name="ToTower3" type="Area2D" parent="."]
+position = Vector2(490, 122)
+script = ExtResource("1_rxgyv")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToTower3"]
+shape = SubResource("RectangleShape2D_s6gw4")
+
+[node name="Player" parent="." instance=ExtResource("2_47h4s")]
+position = Vector2(299, 238)

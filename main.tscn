@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://c32jss4ujes4d"]
+[gd_scene load_steps=3 format=3 uid="uid://c32jss4ujes4d"]
+
+[ext_resource type="PackedScene" uid="uid://i8xmiq6cjejq" path="res://zones/basic_zone.tscn" id="1_4xq47"]
+[ext_resource type="Script" path="res://main.gd" id="1_23yy1"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_23yy1")
+
+[node name="BasicZone" parent="." instance=ExtResource("1_4xq47")]
