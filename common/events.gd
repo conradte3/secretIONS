@@ -1,3 +1,4 @@
 extends Node
 
-signal changer_entered(changer: ZoneChanger)
+@warning_ignore("unused_signal")
+signal changer_entered(change: ZoneChangeInfo)

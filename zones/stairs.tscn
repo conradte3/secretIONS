@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpv7o3kt44b22"]
+
+[ext_resource type="Script" path="res://zones/zone_changer.gd" id="1_068rm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhhfi"]
+size = Vector2(48, 48)
+
+[sub_resource type="Gradient" id="Gradient_47mtr"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rfjub"]
+gradient = SubResource("Gradient_47mtr")
+width = 48
+height = 16
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3mv66"]
+gradient = SubResource("Gradient_47mtr")
+width = 32
+height = 16
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7ke02"]
+gradient = SubResource("Gradient_47mtr")
+width = 16
+height = 16
+
+[node name="Stairs" type="Area2D"]
+script = ExtResource("1_068rm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xhhfi")
+
+[node name="Stair1" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
+texture = SubResource("GradientTexture2D_rfjub")
+
+[node name="Stair2" type="Sprite2D" parent="."]
+position = Vector2(8, 0)
+texture = SubResource("GradientTexture2D_3mv66")
+
+[node name="Stair3" type="Sprite2D" parent="."]
+position = Vector2(16, -16)
+texture = SubResource("GradientTexture2D_7ke02")

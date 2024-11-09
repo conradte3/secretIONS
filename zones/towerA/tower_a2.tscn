@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cupe166uf8yqw"]
+
+[ext_resource type="Script" path="res://zones/zone.gd" id="1_i8sog"]
+[ext_resource type="PackedScene" uid="uid://cy1h5frwcu2ja" path="res://player/player.tscn" id="2_eif4k"]
+[ext_resource type="Script" path="res://zones/zone_changer.gd" id="3_wvi8h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p3bv7"]
+radius = 105.575
+
+[node name="TowerA2" type="Node2D"]
+script = ExtResource("1_i8sog")
+
+[node name="Player" parent="." instance=ExtResource("2_eif4k")]
+position = Vector2(70, 64)
+
+[node name="ZoneChanger" type="Area2D" parent="."]
+position = Vector2(263, 201)
+script = ExtResource("3_wvi8h")
+destination = "res://zones/towerA/tower_a1.tscn"
+is_fall_zone = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneChanger"]
+shape = SubResource("CircleShape2D_p3bv7")

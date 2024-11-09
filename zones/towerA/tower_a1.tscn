@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://dcmj6wttrq2yu"]
+
+[ext_resource type="Script" path="res://zones/zone.gd" id="1_avkpx"]
+[ext_resource type="PackedScene" uid="uid://cy1h5frwcu2ja" path="res://player/player.tscn" id="2_xp144"]
+[ext_resource type="Script" path="res://zones/zone_changer.gd" id="3_4vfgu"]
+[ext_resource type="PackedScene" uid="uid://dnlhwtrw6fxrs" path="res://enemies/basic_enemy.tscn" id="4_xomin"]
+[ext_resource type="PackedScene" uid="uid://dpv7o3kt44b22" path="res://zones/stairs.tscn" id="5_s7dw0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iq76k"]
+size = Vector2(65, 668)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g627v"]
+size = Vector2(1203.5, 61)
+
+[node name="TowerA1" type="Node2D"]
+script = ExtResource("1_avkpx")
+
+[node name="Player" parent="." instance=ExtResource("2_xp144")]
+position = Vector2(173, 153)
+
+[node name="BasicEnemy" parent="." instance=ExtResource("4_xomin")]
+position = Vector2(702, 213)
+
+[node name="FallZones" type="Area2D" parent="."]
+script = ExtResource("3_4vfgu")
+destination = "res://zones/towerA/tower_a0.tscn"
+is_fall_zone = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallZones"]
+position = Vector2(22.5, 324)
+shape = SubResource("RectangleShape2D_iq76k")
+debug_color = Color(0.220913, 0.000311093, 0.324685, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FallZones"]
+position = Vector2(1160, 317)
+shape = SubResource("RectangleShape2D_iq76k")
+debug_color = Color(0.220913, 0.000311093, 0.324685, 0.419608)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="FallZones"]
+position = Vector2(590.75, 620.5)
+shape = SubResource("RectangleShape2D_g627v")
+debug_color = Color(0.220913, 0.000311093, 0.324685, 0.419608)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="FallZones"]
+position = Vector2(594, 20)
+shape = SubResource("RectangleShape2D_g627v")
+debug_color = Color(0.220913, 0.000311093, 0.324685, 0.419608)
+
+[node name="CenterMarker" type="Marker2D" parent="." groups=["center_point"]]
+position = Vector2(590, 313)
+gizmo_extents = 55.5
+
+[node name="Stairs" parent="." instance=ExtResource("5_s7dw0")]
+position = Vector2(962, 500)
+destination = "res://zones/towerA/tower_a2.tscn"

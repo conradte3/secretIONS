@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbyerm5hxym0l"]
+
+[ext_resource type="Script" path="res://zones/zone.gd" id="1_ni8eq"]
+[ext_resource type="PackedScene" uid="uid://dpv7o3kt44b22" path="res://zones/stairs.tscn" id="2_x1yds"]
+[ext_resource type="PackedScene" uid="uid://cy1h5frwcu2ja" path="res://player/player.tscn" id="3_lrv2k"]
+
+[node name="TowerA0" type="Node2D"]
+script = ExtResource("1_ni8eq")
+
+[node name="Stairs" parent="." instance=ExtResource("2_x1yds")]
+position = Vector2(517, 276)
+destination = "res://zones/towerA/tower_a1.tscn"
+
+[node name="Player" parent="." instance=ExtResource("3_lrv2k")]
+position = Vector2(500, 416)

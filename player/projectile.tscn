@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpnj1tyo5o5o6"]
+
+[ext_resource type="Script" path="res://hits/hitbox.gd" id="1_0apxv"]
+[ext_resource type="Script" path="res://player/projectile.gd" id="1_4nvj3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pxc4w"]
+
+[node name="Projectile" type="Node2D"]
+script = ExtResource("1_4nvj3")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_0apxv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_pxc4w")

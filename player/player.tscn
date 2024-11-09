@@ -1,13 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://cy1h5frwcu2ja"]
+[gd_scene load_steps=6 format=3 uid="uid://cy1h5frwcu2ja"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_qyppl"]
+[ext_resource type="PackedScene" uid="uid://cmjtbeqovo6w" path="res://player/bow.tscn" id="2_g1i40"]
+[ext_resource type="Script" path="res://hits/hurtbox.gd" id="3_glbj6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5qlei"]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_2wdg2"]
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_qyppl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5qlei")
+
+[node name="Bow" parent="." instance=ExtResource("2_g1i40")]
+scale = Vector2(0.5, 0.5)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("3_glbj6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_2wdg2")
+debug_color = Color(2.45467e-06, 0.636608, 0.402751, 0.42)
