@@ -46,4 +46,6 @@ script = ExtResource("3_n6n75")
 shape = SubResource("CircleShape2D_hj71s")
 debug_color = Color(0.998764, 0, 0.133256, 0.42)
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="TargetDetector" to="." method="_on_target_detector_body_entered"]

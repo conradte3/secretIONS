@@ -36,10 +36,10 @@ metadata/_edit_lock_ = true
 shape = SubResource("RectangleShape2D_qcoxt")
 
 [node name="Player" parent="." instance=ExtResource("2_xp144")]
-position = Vector2(-16, 157)
+position = Vector2(-221, -375)
 
 [node name="BasicEnemy" parent="." instance=ExtResource("4_xomin")]
-position = Vector2(527, -348)
+position = Vector2(-228, -646)
 
 [node name="Stairs" parent="." instance=ExtResource("5_s7dw0")]
 position = Vector2(10, -647)

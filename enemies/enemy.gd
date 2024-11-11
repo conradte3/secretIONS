@@ -1,24 +1,25 @@
 class_name Enemy extends CharacterBody2D
 
-@export var speed := 100.0
+@export var speed := 200.0
+@export var friction := 200.0
 
 var target: Node2D
 var center: Node2D
 
-var stunned := false
 
 func _ready() -> void:
 	$Hurtbox.was_hit.connect(func(hit: HitInfo) -> void:
-		velocity = hit.direction * 200.0
-		stunned = true
-		await get_tree().create_timer(0.5).timeout
-		stunned = false
+		velocity += hit.direction * 200.0
 	)
 
-func _physics_process(_delta: float) -> void:
-	if not stunned:
-		var dir = choose_direction()
-		velocity = dir * speed
+func take_action() -> void:
+	var dir = choose_direction()
+	velocity = dir * speed
+
+func _physics_process(delta: float) -> void:
+	velocity = velocity.move_toward(Vector2.ZERO, delta * friction)
+	if velocity.is_zero_approx():
+		take_action()
 	move_and_slide()
 
 func choose_direction() -> Vector2:
