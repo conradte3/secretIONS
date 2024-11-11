@@ -8,7 +8,6 @@ var center: Node2D
 var stunned := false
 
 func _ready() -> void:
-	center = get_tree().get_first_node_in_group("center_point")
 	$Hurtbox.was_hit.connect(func(hit: HitInfo) -> void:
 		velocity = hit.direction * 200.0
 		stunned = true
@@ -44,3 +43,6 @@ func choose_direction() -> Vector2:
 
 func _on_target_detector_body_entered(body: Node2D) -> void:
 	target = body
+
+func _draw() -> void:
+	draw_circle(Vector2.ZERO, 10.0, Color.RED)

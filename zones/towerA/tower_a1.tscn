@@ -1,55 +1,46 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcmj6wttrq2yu"]
+[gd_scene load_steps=9 format=3 uid="uid://dcmj6wttrq2yu"]
 
 [ext_resource type="Script" path="res://zones/zone.gd" id="1_avkpx"]
 [ext_resource type="PackedScene" uid="uid://cy1h5frwcu2ja" path="res://player/player.tscn" id="2_xp144"]
-[ext_resource type="Script" path="res://zones/zone_changer.gd" id="3_4vfgu"]
 [ext_resource type="PackedScene" uid="uid://dnlhwtrw6fxrs" path="res://enemies/basic_enemy.tscn" id="4_xomin"]
+[ext_resource type="PackedScene" uid="uid://bihhmagx0nioc" path="res://zones/floor.tscn" id="5_bygtb"]
 [ext_resource type="PackedScene" uid="uid://dpv7o3kt44b22" path="res://zones/stairs.tscn" id="5_s7dw0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iq76k"]
-size = Vector2(65, 668)
+[sub_resource type="Gradient" id="Gradient_bygtb"]
+offsets = PackedFloat32Array(0.78125, 0.803571, 1)
+colors = PackedColorArray(0.103378, 0.0289978, 2.40654e-08, 1, 1, 1, 1, 1, 0.653903, 0.752161, 0.834181, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g627v"]
-size = Vector2(1203.5, 61)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_junbf"]
+gradient = SubResource("Gradient_bygtb")
+width = 100
+height = 100
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcoxt"]
+size = Vector2(1600, 1600)
 
 [node name="TowerA1" type="Node2D"]
 script = ExtResource("1_avkpx")
 
+[node name="BgGradient" type="Sprite2D" parent="."]
+scale = Vector2(20, 20)
+texture = SubResource("GradientTexture2D_junbf")
+metadata/_edit_lock_ = true
+
+[node name="Floor" parent="." instance=ExtResource("5_bygtb")]
+destination = "res://zones/towerA/tower_a0.tscn"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_qcoxt")
+
 [node name="Player" parent="." instance=ExtResource("2_xp144")]
-position = Vector2(173, 153)
+position = Vector2(-16, 157)
 
 [node name="BasicEnemy" parent="." instance=ExtResource("4_xomin")]
-position = Vector2(702, 213)
-
-[node name="FallZones" type="Area2D" parent="."]
-script = ExtResource("3_4vfgu")
-destination = "res://zones/towerA/tower_a0.tscn"
-is_fall_zone = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FallZones"]
-position = Vector2(22.5, 324)
-shape = SubResource("RectangleShape2D_iq76k")
-debug_color = Color(0.220913, 0.000311093, 0.324685, 0.419608)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="FallZones"]
-position = Vector2(1160, 317)
-shape = SubResource("RectangleShape2D_iq76k")
-debug_color = Color(0.220913, 0.000311093, 0.324685, 0.419608)
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="FallZones"]
-position = Vector2(590.75, 620.5)
-shape = SubResource("RectangleShape2D_g627v")
-debug_color = Color(0.220913, 0.000311093, 0.324685, 0.419608)
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="FallZones"]
-position = Vector2(594, 20)
-shape = SubResource("RectangleShape2D_g627v")
-debug_color = Color(0.220913, 0.000311093, 0.324685, 0.419608)
-
-[node name="CenterMarker" type="Marker2D" parent="." groups=["center_point"]]
-position = Vector2(590, 313)
-gizmo_extents = 55.5
+position = Vector2(527, -348)
 
 [node name="Stairs" parent="." instance=ExtResource("5_s7dw0")]
-position = Vector2(962, 500)
+position = Vector2(10, -647)
 destination = "res://zones/towerA/tower_a2.tscn"

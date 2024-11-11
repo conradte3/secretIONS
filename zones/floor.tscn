@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bihhmagx0nioc"]
+
+[ext_resource type="Script" path="res://zones/zone_changer.gd" id="1_vwac2"]
+
+[node name="Floor" type="Area2D"]
+script = ExtResource("1_vwac2")
+is_fall_zone = true
+change_on_exit = true
+metadata/_custom_type_script = ExtResource("1_vwac2")

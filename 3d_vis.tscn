@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://biiyxh8o72nto"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijxvn"]
+albedo_color = Color(0.0600381, 0.234603, 0.408673, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4apee"]
+material = SubResource("StandardMaterial3D_ijxvn")
+size = Vector2(16, 16)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3mnu"]
+albedo_color = Color(0.765415, 0.574698, 0.387756, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xo7ag"]
+material = SubResource("StandardMaterial3D_d3mnu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4apee"]
+albedo_color = Color(0.352299, 0.318065, 0.298273, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d3mnu"]
+material = SubResource("StandardMaterial3D_4apee")
+top_radius = 4.0
+bottom_radius = 4.0
+height = 4.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Base" type="Node3D" parent="."]
+
+[node name="Water" type="MeshInstance3D" parent="Base"]
+mesh = SubResource("PlaneMesh_4apee")
+skeleton = NodePath("../..")
+
+[node name="Island1" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(13.1744, 0, -2.25429, 0, 0.152527, 0, 2.48028, 0, 11.974, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xo7ag")
+skeleton = NodePath("../..")
+
+[node name="Island2" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(9.42226, 0, -6.149, 0, 0.300048, 0, 4.38686, 0, 13.207, 0, 0, -0.805235)
+mesh = SubResource("CylinderMesh_xo7ag")
+skeleton = NodePath("../..")
+
+[node name="Tower" type="Node3D" parent="."]
+
+[node name="Tower0" type="MeshInstance3D" parent="Tower"]
+transform = Transform3D(0.670316, 0, 0, 0, 1.0161, 0, 0, 0, 0.670316, 0, 2.06629, 0)
+mesh = SubResource("CylinderMesh_d3mnu")
+skeleton = NodePath("../..")
+
+[node name="Tower1" type="MeshInstance3D" parent="Tower"]
+transform = Transform3D(0.561565, 0, 0, 0, 1, 0, 0, 0, 0.561565, 0, 5.81445, 0)
+mesh = SubResource("CylinderMesh_d3mnu")
+skeleton = NodePath("../..")
+
+[node name="Tower2" type="MeshInstance3D" parent="Tower"]
+transform = Transform3D(0.472521, 0, 0, 0, 0.843244, 0, 0, 0, 0.472521, 0, 9.39792, 0)
+mesh = SubResource("CylinderMesh_d3mnu")
+skeleton = NodePath("../..")
+
+[node name="Tower3" type="MeshInstance3D" parent="Tower"]
+transform = Transform3D(0.389027, 0, 0, 0, 0.69563, 0, 0, 0, 0.389027, 0, 12.3986, 0)
+mesh = SubResource("CylinderMesh_d3mnu")
+skeleton = NodePath("../..")

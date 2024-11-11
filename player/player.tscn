@@ -9,6 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_2wdg2"]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_qyppl")
@@ -27,3 +28,19 @@ script = ExtResource("3_glbj6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_2wdg2")
 debug_color = Color(2.45467e-06, 0.636608, 0.402751, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -800
+limit_top = -800
+limit_right = 800
+limit_bottom = 800
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.16
+drag_right_margin = 0.1
+drag_bottom_margin = 0.16
+editor_draw_limits = true

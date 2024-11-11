@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://i8xmiq6cjejq"]
+
+[ext_resource type="PackedScene" uid="uid://cy1h5frwcu2ja" path="res://player/player.tscn" id="1_dpgvl"]
+[ext_resource type="Script" path="res://zones/zone.gd" id="1_xnawd"]
+[ext_resource type="PackedScene" uid="uid://2irh2ywh44g2" path="res://zones/hole.tscn" id="3_cw6pa"]
+
+[node name="BasicZone" type="Node2D"]
+script = ExtResource("1_xnawd")
+
+[node name="Hole" parent="." instance=ExtResource("3_cw6pa")]
+position = Vector2(587, 305)
+radius = 128.0
+destination = "res://zones/hubs/tower_select_zone.tscn"
+
+[node name="Player" parent="." instance=ExtResource("1_dpgvl")]
+position = Vector2(184, 225)
+collision_mask = 1

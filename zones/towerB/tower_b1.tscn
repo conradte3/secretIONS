@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmar6s4iq60hw"]
+
+[ext_resource type="Script" path="res://zones/zone.gd" id="1_tu6dm"]
+[ext_resource type="PackedScene" uid="uid://cy1h5frwcu2ja" path="res://player/player.tscn" id="2_dawcu"]
+[ext_resource type="PackedScene" uid="uid://dpv7o3kt44b22" path="res://zones/stairs.tscn" id="3_bk2n4"]
+[ext_resource type="Script" path="res://zones/zone_changer.gd" id="4_i74jh"]
+[ext_resource type="PackedScene" uid="uid://bv3x0t8t4pphe" path="res://enemies/tether.tscn" id="5_ik8gj"]
+[ext_resource type="PackedScene" uid="uid://dnlhwtrw6fxrs" path="res://enemies/basic_enemy.tscn" id="6_ek8jn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bk2n4"]
+radius = 70.0071
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i74jh"]
+size = Vector2(43, 340.927)
+
+[node name="TowerB1" type="Node2D"]
+script = ExtResource("1_tu6dm")
+metadata/_custom_type_script = ExtResource("1_tu6dm")
+
+[node name="Player" parent="." instance=ExtResource("2_dawcu")]
+position = Vector2(636, 102)
+
+[node name="Stairs" parent="." instance=ExtResource("3_bk2n4")]
+position = Vector2(511, 87)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(574, 243)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, 95)
+shape = SubResource("CircleShape2D_bk2n4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, -81)
+shape = SubResource("RectangleShape2D_i74jh")
+
+[node name="FallZones" type="Area2D" parent="."]
+script = ExtResource("4_i74jh")
+destination = "res://zones/towerB/tower_b0.tscn"
+is_fall_zone = true
+metadata/_custom_type_script = ExtResource("4_i74jh")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="FallZones"]
+position = Vector2(737, 74)
+rotation = -1.0472
+shape = SubResource("RectangleShape2D_i74jh")
+debug_color = Color(0.194642, 0.000202414, 0.27633, 0.42)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="FallZones"]
+position = Vector2(886, 336)
+shape = SubResource("RectangleShape2D_i74jh")
+debug_color = Color(0.194642, 0.000202414, 0.27633, 0.42)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="FallZones"]
+position = Vector2(727, 586)
+rotation = 1.0472
+shape = SubResource("RectangleShape2D_i74jh")
+debug_color = Color(0.194642, 0.000202414, 0.27633, 0.42)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="FallZones"]
+position = Vector2(422, 584)
+rotation = -1.0472
+shape = SubResource("RectangleShape2D_i74jh")
+debug_color = Color(0.194642, 0.000202414, 0.27633, 0.42)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="FallZones"]
+position = Vector2(279, 328)
+shape = SubResource("RectangleShape2D_i74jh")
+debug_color = Color(0.194642, 0.000202414, 0.27633, 0.42)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="FallZones"]
+position = Vector2(420, 70)
+rotation = 1.0472
+shape = SubResource("RectangleShape2D_i74jh")
+debug_color = Color(0.194642, 0.000202414, 0.27633, 0.42)
+
+[node name="Tether" parent="." instance=ExtResource("5_ik8gj")]
+position = Vector2(572, 520)
+enemy_type = ExtResource("6_ek8jn")

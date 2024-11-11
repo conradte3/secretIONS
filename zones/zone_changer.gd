@@ -1,7 +1,9 @@
 class_name ZoneChanger extends Area2D
 
 @export_file("*.tscn") var destination : String
+@export var keep_position := true
 @export var is_fall_zone := false
+@export var change_on_exit := false
 
 func _ready() -> void:
 	collision_layer = 0
@@ -10,17 +12,26 @@ func _ready() -> void:
 	if is_fall_zone:
 		set_collision_mask_value(3, true)
 
-	body_entered.connect(_on_body_entered)
+	if change_on_exit:
+		body_exited.connect(_on_body_entered)
+	else:
+		body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
+		if not destination:
+			printerr("No destination set for ", self)
+			return
+
 		var info = ZoneChangeInfo.new()
 
 		info.changer = self
 		info.from = owner
 		info.to = load(destination)
-		info.from_position = body.global_position
+		if keep_position:
+			info.has_position = true
+			info.from_position = body.global_position
 
-		Events.changer_entered.emit.call_deferred(info)
+		Scenes.change_zone(info)
 	elif is_fall_zone:
 		body.queue_free()

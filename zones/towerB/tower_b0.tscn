@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://xu53txbh54l6"]
+
+[ext_resource type="Script" path="res://zones/zone.gd" id="1_ldh1s"]
+[ext_resource type="PackedScene" uid="uid://dpv7o3kt44b22" path="res://zones/stairs.tscn" id="2_vqsd5"]
+[ext_resource type="PackedScene" uid="uid://cy1h5frwcu2ja" path="res://player/player.tscn" id="3_664e7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vqsd5"]
+radius = 70.0071
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqsd5"]
+size = Vector2(43, 408.031)
+
+[node name="TowerB0" type="Node2D"]
+script = ExtResource("1_ldh1s")
+metadata/_custom_type_script = ExtResource("1_ldh1s")
+
+[node name="Stairs" parent="." instance=ExtResource("2_vqsd5")]
+position = Vector2(514, 39)
+destination = "res://zones/towerB/tower_b1.tscn"
+keep_position = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(573, 256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4, 81)
+shape = SubResource("CircleShape2D_vqsd5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4, -120)
+shape = SubResource("RectangleShape2D_vqsd5")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(193, -231)
+rotation = -1.0472
+shape = SubResource("RectangleShape2D_vqsd5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(362, 77)
+shape = SubResource("RectangleShape2D_vqsd5")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(184, 377)
+rotation = 1.0472
+shape = SubResource("RectangleShape2D_vqsd5")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-181, 380)
+rotation = -1.0472
+shape = SubResource("RectangleShape2D_vqsd5")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-356, 79)
+shape = SubResource("RectangleShape2D_vqsd5")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-184, -231)
+rotation = 1.0472
+shape = SubResource("RectangleShape2D_vqsd5")
+
+[node name="Player" parent="." instance=ExtResource("3_664e7")]
+position = Vector2(649, 56)
