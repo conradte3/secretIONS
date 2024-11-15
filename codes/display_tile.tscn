@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmfpjsiorri10"]
+
+[ext_resource type="Script" path="res://codes/display_tile.gd" id="1_45gxh"]
+[ext_resource type="Texture2D" uid="uid://fqn657777a72" path="res://codes/runes.png" id="1_e6ajg"]
+
+[sub_resource type="Gradient" id="Gradient_wihe8"]
+offsets = PackedFloat32Array(0.857143, 0.96875, 1)
+colors = PackedColorArray(0.116008, 0.130865, 0.209719, 1, 0.202481, 0.227907, 0.379132, 1, 0.0529328, 0.0475788, 0.106055, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_45gxh"]
+gradient = SubResource("Gradient_wihe8")
+width = 96
+height = 96
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[node name="DisplayTile" type="Node2D"]
+script = ExtResource("1_45gxh")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_45gxh")
+
+[node name="Rune2" type="Sprite2D" parent="."]
+self_modulate = Color(0.0169945, 5.48991e-06, 0.123763, 1)
+texture = ExtResource("1_e6ajg")
+hframes = 5
+vframes = 6
+frame = 1
+
+[node name="Rune3" type="Sprite2D" parent="."]
+self_modulate = Color(0.0169945, 5.48991e-06, 0.123763, 1)
+texture = ExtResource("1_e6ajg")
+hframes = 5
+vframes = 6
+frame = 10
+
+[node name="Rune4" type="Sprite2D" parent="."]
+self_modulate = Color(0.0169945, 5.48991e-06, 0.123763, 1)
+texture = ExtResource("1_e6ajg")
+hframes = 5
+vframes = 6
+frame = 12
+
+[node name="Rune5" type="Sprite2D" parent="."]
+self_modulate = Color(0.0169945, 5.48991e-06, 0.123763, 1)
+texture = ExtResource("1_e6ajg")
+hframes = 5
+vframes = 6
+frame = 16
+
+[node name="Rune" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_e6ajg")
+hframes = 5
+vframes = 6

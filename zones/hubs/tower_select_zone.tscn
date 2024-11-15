@@ -1,25 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://bssrkkkdw56li"]
+[gd_scene load_steps=6 format=3 uid="uid://bssrkkkdw56li"]
 
 [ext_resource type="Script" path="res://zones/zone.gd" id="1_vvwm7"]
 [ext_resource type="PackedScene" uid="uid://cy1h5frwcu2ja" path="res://player/player.tscn" id="2_47h4s"]
 [ext_resource type="PackedScene" uid="uid://dpv7o3kt44b22" path="res://zones/stairs.tscn" id="3_xs0u0"]
 
+[sub_resource type="Gradient" id="Gradient_3vsw4"]
+offsets = PackedFloat32Array(0.0803571, 0.633929, 0.678571, 0.852679, 1)
+colors = PackedColorArray(0.769798, 0.640363, 0.368252, 1, 0.947662, 0.869193, 0.716704, 1, 0.157872, 0.338787, 0.423706, 1, 0.878753, 0.936517, 0.968466, 1, 0.524969, 0.781138, 0.91367, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v1m2a"]
+gradient = SubResource("Gradient_3vsw4")
+width = 100
+height = 100
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
 [node name="TowerSelectZone" type="Node2D"]
 script = ExtResource("1_vvwm7")
 
+[node name="BG" type="Sprite2D" parent="."]
+scale = Vector2(16, 16)
+texture = SubResource("GradientTexture2D_v1m2a")
+
 [node name="Player" parent="." instance=ExtResource("2_47h4s")]
-position = Vector2(589, 517)
+position = Vector2(-11, 443)
 
 [node name="Stairs" parent="." instance=ExtResource("3_xs0u0")]
-position = Vector2(201, 231)
+position = Vector2(-640, -158)
 destination = "res://zones/towerA/tower_a0.tscn"
 keep_position = false
 
 [node name="Stairs2" parent="." instance=ExtResource("3_xs0u0")]
-position = Vector2(534, 47)
+position = Vector2(7, -170)
 destination = "res://zones/towerB/tower_b0.tscn"
 keep_position = false
 
 [node name="Stairs3" parent="." instance=ExtResource("3_xs0u0")]
-position = Vector2(912, 246)
+position = Vector2(526, -168)
 keep_position = false

@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://c32jss4ujes4d"]
 
-[ext_resource type="PackedScene" uid="uid://i8xmiq6cjejq" path="res://zones/hubs/basic_zone.tscn" id="1_4xq47"]
 [ext_resource type="Script" path="res://main.gd" id="1_23yy1"]
+[ext_resource type="PackedScene" uid="uid://cvf0pewpav8xn" path="res://zones/hubs/entry_point.tscn" id="2_0xm2m"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_23yy1")
 
-[node name="BasicZone" parent="." instance=ExtResource("1_4xq47")]
+[node name="EntryPoint" parent="." instance=ExtResource("2_0xm2m")]

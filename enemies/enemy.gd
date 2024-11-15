@@ -9,7 +9,7 @@ var center: Node2D
 
 func _ready() -> void:
 	$Hurtbox.was_hit.connect(func(hit: HitInfo) -> void:
-		velocity += hit.direction * 200.0
+		velocity = hit.direction * 200.0
 	)
 
 func take_action() -> void:

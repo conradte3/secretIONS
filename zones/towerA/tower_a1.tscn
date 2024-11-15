@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcmj6wttrq2yu"]
+[gd_scene load_steps=10 format=3 uid="uid://dcmj6wttrq2yu"]
 
 [ext_resource type="Script" path="res://zones/zone.gd" id="1_avkpx"]
 [ext_resource type="PackedScene" uid="uid://cy1h5frwcu2ja" path="res://player/player.tscn" id="2_xp144"]
 [ext_resource type="PackedScene" uid="uid://dnlhwtrw6fxrs" path="res://enemies/basic_enemy.tscn" id="4_xomin"]
 [ext_resource type="PackedScene" uid="uid://bihhmagx0nioc" path="res://zones/floor.tscn" id="5_bygtb"]
 [ext_resource type="PackedScene" uid="uid://dpv7o3kt44b22" path="res://zones/stairs.tscn" id="5_s7dw0"]
+[ext_resource type="PackedScene" uid="uid://bv3x0t8t4pphe" path="res://enemies/tether.tscn" id="6_qcoxt"]
 
 [sub_resource type="Gradient" id="Gradient_bygtb"]
-offsets = PackedFloat32Array(0.78125, 0.803571, 1)
+offsets = PackedFloat32Array(0.875, 0.888393, 1)
 colors = PackedColorArray(0.103378, 0.0289978, 2.40654e-08, 1, 1, 1, 1, 1, 0.653903, 0.752161, 0.834181, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_junbf"]
@@ -18,13 +19,13 @@ fill = 2
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qcoxt"]
-size = Vector2(1600, 1600)
+size = Vector2(1400, 1400)
 
 [node name="TowerA1" type="Node2D"]
 script = ExtResource("1_avkpx")
 
 [node name="BgGradient" type="Sprite2D" parent="."]
-scale = Vector2(20, 20)
+scale = Vector2(16, 16)
 texture = SubResource("GradientTexture2D_junbf")
 metadata/_edit_lock_ = true
 
@@ -35,12 +36,25 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource("RectangleShape2D_qcoxt")
 
-[node name="Player" parent="." instance=ExtResource("2_xp144")]
-position = Vector2(-221, -375)
+[node name="Tether" parent="." instance=ExtResource("6_qcoxt")]
+position = Vector2(-300, -300)
+enemy_type = ExtResource("4_xomin")
 
-[node name="BasicEnemy" parent="." instance=ExtResource("4_xomin")]
-position = Vector2(-228, -646)
+[node name="Tether2" parent="." instance=ExtResource("6_qcoxt")]
+position = Vector2(300, -300)
+enemy_type = ExtResource("4_xomin")
+
+[node name="Tether3" parent="." instance=ExtResource("6_qcoxt")]
+position = Vector2(-300, 300)
+enemy_type = ExtResource("4_xomin")
+
+[node name="Tether4" parent="." instance=ExtResource("6_qcoxt")]
+position = Vector2(300, 300)
+enemy_type = ExtResource("4_xomin")
+
+[node name="Player" parent="." instance=ExtResource("2_xp144")]
+position = Vector2(10, -9)
 
 [node name="Stairs" parent="." instance=ExtResource("5_s7dw0")]
-position = Vector2(10, -647)
+position = Vector2(10, -530)
 destination = "res://zones/towerA/tower_a2.tscn"

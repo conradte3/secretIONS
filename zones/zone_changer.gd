@@ -5,6 +5,8 @@ class_name ZoneChanger extends Area2D
 @export var is_fall_zone := false
 @export var change_on_exit := false
 
+var loaded_destination : PackedScene
+
 func _ready() -> void:
 	collision_layer = 0
 	collision_mask = 0
@@ -19,7 +21,7 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		if not destination:
+		if not destination and not loaded_destination:
 			printerr("No destination set for ", self)
 			return
 
@@ -27,7 +29,10 @@ func _on_body_entered(body: Node2D) -> void:
 
 		info.changer = self
 		info.from = owner
-		info.to = load(destination)
+		if loaded_destination:
+			info.to = loaded_destination
+		else:
+			info.to = load(destination)
 		if keep_position:
 			info.has_position = true
 			info.from_position = body.global_position

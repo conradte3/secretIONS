@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://80ufxxwsd2fr"]
+
+[ext_resource type="Script" path="res://zones/zone_changer.gd" id="1_408xx"]
+[ext_resource type="Script" path="res://zones/elevator.gd" id="1_counr"]
+
+[sub_resource type="Gradient" id="Gradient_qet7t"]
+offsets = PackedFloat32Array(0.852679, 0.924107, 1)
+colors = PackedColorArray(0.114742, 0.170134, 0.305045, 1, 0.0745668, 0.1038, 0.197067, 1, 0.0396778, 0.0461934, 0.103297, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nmd74"]
+gradient = SubResource("Gradient_qet7t")
+width = 192
+height = 192
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_wihe8"]
+offsets = PackedFloat32Array(0.879464, 0.955357, 1)
+colors = PackedColorArray(0.183498, 0.207116, 0.347995, 1, 0.116008, 0.130865, 0.209719, 1, 0.0529328, 0.0475788, 0.106055, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_counr"]
+gradient = SubResource("Gradient_wihe8")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_counr"]
+size = Vector2(64, 64)
+
+[node name="Elevator" type="Area2D"]
+script = ExtResource("1_counr")
+metadata/_custom_type_script = ExtResource("1_408xx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_nmd74")
+
+[node name="Button" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_counr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_counr")

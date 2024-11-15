@@ -1,11 +1,17 @@
 extends Node
 
+@export var floor_codes : Dictionary[String, PackedScene]
+
 var _root : Node
 
 var _active_change : ZoneChangeInfo
 
 func _ready() -> void:
 	_root = get_tree().root
+
+func get_from_code(floor_code: String, tower_id: int) -> PackedScene:
+	var full_code = "{1}-{0}".format([floor_code, tower_id])
+	return floor_codes.get(full_code, null)
 
 func change_zone(info: ZoneChangeInfo) -> void:
 	if _active_change == null:

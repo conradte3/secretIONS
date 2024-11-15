@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4jc1ge16oua"]
+
+[ext_resource type="Texture2D" uid="uid://fqn657777a72" path="res://codes/runes.png" id="1_qhfki"]
+[ext_resource type="Script" path="res://codes/tile.gd" id="1_tg7iw"]
+
+[sub_resource type="Gradient" id="Gradient_6uc35"]
+offsets = PackedFloat32Array(0.879464, 0.955357, 1)
+colors = PackedColorArray(0.183498, 0.207116, 0.347995, 1, 0.116008, 0.130865, 0.209719, 1, 0.0529328, 0.0475788, 0.106055, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qhfki"]
+gradient = SubResource("Gradient_6uc35")
+width = 96
+height = 96
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_tg7iw"]
+offsets = PackedFloat32Array(0.8125, 0.964286, 1)
+colors = PackedColorArray(0.116008, 0.130865, 0.209719, 1, 0.237747, 0.266454, 0.436023, 1, 0.116008, 0.130865, 0.209719, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6uc35"]
+gradient = SubResource("Gradient_tg7iw")
+width = 96
+height = 96
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[node name="PressableTile" type="Node2D"]
+script = ExtResource("1_tg7iw")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_qhfki")
+
+[node name="BasePressed" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("GradientTexture2D_6uc35")
+
+[node name="Rune" type="Sprite2D" parent="."]
+self_modulate = Color(0.0577171, 0.04546, 0.10608, 1)
+texture = ExtResource("1_qhfki")
+hframes = 5
+vframes = 6

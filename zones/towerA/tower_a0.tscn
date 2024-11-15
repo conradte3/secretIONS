@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbyerm5hxym0l"]
+[gd_scene load_steps=12 format=4 uid="uid://dbyerm5hxym0l"]
 
 [ext_resource type="Script" path="res://zones/zone.gd" id="1_ni8eq"]
+[ext_resource type="PackedScene" uid="uid://80ufxxwsd2fr" path="res://zones/elevator.tscn" id="2_x0msj"]
 [ext_resource type="PackedScene" uid="uid://dpv7o3kt44b22" path="res://zones/stairs.tscn" id="2_x1yds"]
+[ext_resource type="PackedScene" uid="uid://cmfpjsiorri10" path="res://codes/display_tile.tscn" id="3_77o3s"]
 [ext_resource type="PackedScene" uid="uid://cy1h5frwcu2ja" path="res://player/player.tscn" id="3_lrv2k"]
+[ext_resource type="Script" path="res://codes/pressable_tiles.gd" id="3_qet7t"]
+[ext_resource type="PackedScene" uid="uid://b4jc1ge16oua" path="res://codes/tile.tscn" id="4_m88q2"]
 
 [sub_resource type="Gradient" id="Gradient_o5cw6"]
 offsets = PackedFloat32Array(0.870536, 1)
@@ -15,6 +19,15 @@ height = 100
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_qet7t"]
+resource_name = "RuneTiles"
+scenes/1/scene = ExtResource("4_m88q2")
+scenes/2/scene = ExtResource("3_77o3s")
+
+[sub_resource type="TileSet" id="TileSet_77o3s"]
+tile_size = Vector2i(96, 96)
+sources/0 = SubResource("TileSetScenesCollectionSource_qet7t")
+
 [node name="TowerA0" type="Node2D"]
 script = ExtResource("1_ni8eq")
 
@@ -23,10 +36,20 @@ scale = Vector2(16, 16)
 texture = SubResource("GradientTexture2D_o5cw6")
 metadata/_edit_lock_ = true
 
+[node name="Elevator" parent="." instance=ExtResource("2_x0msj")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." node_paths=PackedStringArray("elevator")]
+tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAQD+////AAAAAAAAAQD+//7/AAAAAAAAAQD///7/AAAAAAAAAQAAAP7/AAAAAAAAAQABAP7/AAAAAAAAAQABAP//AAAAAAAAAQABAAAAAAAAAAAAAQACAAEAAAAAAAAAAQACAAAAAAAAAAAAAQACAP//AAAAAAAAAQACAP7/AAAAAAAAAQACAP3/AAAAAAAAAQABAP3/AAAAAAAAAQAAAP3/AAAAAAAAAQD///3/AAAAAAAAAQD+//3/AAAAAAAAAQD9//3/AAAAAAAAAQD9//7/AAAAAAAAAQD9////AAAAAAAAAQD9/wAAAAAAAAAAAQD9/wEAAAAAAAAAAQD+/wIAAAAAAAAAAQD//wIAAAAAAAAAAQAAAAIAAAAAAAAAAQABAAIAAAAAAAAAAQD+/wEAAAAAAAAAAgD//wEAAAAAAAAAAgAAAAEAAAAAAAAAAgABAAEAAAAAAAAAAgA=")
+tile_set = SubResource("TileSet_77o3s")
+script = ExtResource("3_qet7t")
+display_start = Vector2i(-2, 1)
+elevator = NodePath("../Elevator")
+
 [node name="Stairs" parent="." instance=ExtResource("2_x1yds")]
-position = Vector2(-15, -135)
+position = Vector2(36, -608)
 destination = "res://zones/towerA/tower_a1.tscn"
 
 [node name="Player" parent="." instance=ExtResource("3_lrv2k")]
-position = Vector2(-12, -320)
+position = Vector2(-19, 319)
+non_combat = true
 metadata/_edit_group_ = true
