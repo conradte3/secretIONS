@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cupe166uf8yqw"]
+[gd_scene load_steps=13 format=3 uid="uid://cupe166uf8yqw"]
 
 [ext_resource type="Script" path="res://zones/zone.gd" id="1_i8sog"]
 [ext_resource type="PackedScene" uid="uid://cy1h5frwcu2ja" path="res://player/player.tscn" id="2_eif4k"]
 [ext_resource type="PackedScene" uid="uid://bihhmagx0nioc" path="res://zones/floor.tscn" id="2_l6bng"]
 [ext_resource type="PackedScene" uid="uid://2irh2ywh44g2" path="res://zones/hole.tscn" id="3_6yvta"]
+[ext_resource type="PackedScene" uid="uid://bk6xijonyswi6" path="res://enemies/thumper.tscn" id="5_7ufjj"]
 
 [sub_resource type="Gradient" id="Gradient_bygtb"]
 offsets = PackedFloat32Array(0.584821, 0.616071, 1)
@@ -80,3 +81,5 @@ scroll_offset = Vector2(115.2, 64.8)
 z_index = -2
 scale = Vector2(14, 14)
 texture = SubResource("GradientTexture2D_7ufjj")
+
+[node name="Thumper" parent="." instance=ExtResource("5_7ufjj")]
